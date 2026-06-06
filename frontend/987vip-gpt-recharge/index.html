@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>AI Plus 充值平台</title>
+  <link rel="icon" href="https://chongplus.xyz/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=20260519-force-fix">
+</head>
+<body>
+  <div class="mist-bg"></div>
+  <main class="app-card" data-step="1">
+    <div class="language-bar">
+      <button class="language-trigger" id="languageTrigger" type="button"><span id="currentLangCode">CN</span><b id="currentLangName">中文</b><span>⌄</span></button>
+      <div class="language-menu" id="languageMenu">
+        <button type="button" data-lang="zh-CN">CN 中文</button>
+        <button type="button" data-lang="en">US English</button>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="hero-inner">
+        <img class="logo" src="https://chongplus.xyz/favicon.svg" alt="">
+        <h1 data-i18n="title">AI Plus 充值平台</h1>
+        <p data-i18n="subtitle">专业、正规、安全、快捷</p>
+      </div>
+    </header>
+
+    <div class="steps">
+      <div class="step active"><span>1</span></div>
+      <div class="step"><span>2</span></div>
+      <div class="step"><span>3</span></div>
+    </div>
+
+    <section class="pane" id="pane1">
+      <label class="label" for="cardKey"><span data-i18n="cardLabel">验证卡密</span><em>*</em></label>
+      <div class="input-wrap"><input id="cardKey" data-i18n-placeholder="cardPlaceholder" placeholder="请输入卡密" autocomplete="off"></div>
+    </section>
+
+    <section class="pane hidden" id="pane2">
+      <div class="verified">
+        <div class="verified-title"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 12.4l2 2 4.2-4.8"></path><circle cx="12" cy="12" r="8.5"></circle></svg><b data-i18n="cardVerified">已验证卡密</b></div>
+        <p><span data-i18n="cardPrefix">卡密:</span> <span id="verifiedCardValue">--</span></p>
+      </div>
+      <div class="row-line"><svg class="ui-icon step-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"></path></svg><b data-i18n="flowStepOne">第一步:</b><a class="green" href="https://chat.openai.com/auth/login" target="_blank" rel="noopener"><svg class="link-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M10 7V5.5A2.5 2.5 0 0 1 12.5 3H18a2.5 2.5 0 0 1 2.5 2.5v13A2.5 2.5 0 0 1 18 21h-5.5A2.5 2.5 0 0 1 10 18.5V17"></path><path d="M3.5 12h11"></path><path d="M11.5 8.5 15 12l-3.5 3.5"></path></svg><span data-i18n="loginBtn">点击登录GPT</span></a></div>
+      <div class="row-line"><svg class="ui-icon step-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"></path></svg><b data-i18n="flowStepTwo">第二步:</b><a class="blue" href="https://chat.openai.com/api/auth/session" target="_blank" rel="noopener"><svg class="link-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg><span data-i18n="credentialBtn">点我获取充值秘钥</span></a></div>
+      <p class="warning"><svg class="ui-icon warn-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m12 4 9 16H3L12 4Z"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg><span data-i18n="rechargeWarning">如果返回内容是空的，则登录不成功，请重新登录</span></p>
+      <label class="label with-icon" for="tokenBox"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2.5"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path><path d="M12 14v2"></path></svg><span data-i18n="tokenLabel">第三步：输入充值秘钥</span><em>*</em></label>
+      <div class="input-wrap"><textarea id="tokenBox" data-i18n-placeholder="tokenPlaceholder" placeholder="请将上方返回的完整 JSON 复制至此处，也兼容单独粘贴 token"></textarea></div>
+    </section>
+
+    <section class="pane hidden" id="pane3">
+      <div class="confirm-card">
+        <h3 data-i18n="confirmInfoTitle">确认充值信息</h3>
+        <div><span data-i18n="confirmEmailLabel">账户邮箱:</span><b id="sumMail">--</b></div>
+        <div><span data-i18n="confirmCardLabel">卡密:</span><b id="confirmCardKey">--</b></div>
+        <div><span data-i18n="confirmChannelLabel">充值通道:</span><b id="sumChannel">自动识别</b></div>
+        <div><span data-i18n="confirmPlanLabel">当前订阅:</span><b id="sumPlan">--</b></div>
+        <div><span data-i18n="statusLabel">任务状态</span><b id="sumStat">等待提交</b></div>
+      </div>
+      <div class="override-panel hidden" id="overridePanel">
+        <div class="override-alert">
+          <svg class="ui-icon warn-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m12 4 9 16H3L12 4Z"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+          <div>
+            <b>检测到当前账号可能已有 Plus 或付费订阅</b>
+            <p>继续充值可能会覆盖或延长现有订阅。请确认后再提交。</p>
+          </div>
+        </div>
+        <label class="override-check" for="forceRecharge">
+          <input id="forceRecharge" type="checkbox">
+          <span>我确认覆盖充值 / 强制充值</span>
+        </label>
+      </div>
+      <div id="logArea" class="log-stream"></div>
+    </section>
+
+    <footer class="actions">
+      <button id="backBtn" class="btn ghost" type="button" hidden><svg class="btn-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg><span data-i18n="btnBack">返回</span></button>
+      <button id="nextBtn" class="btn primary" type="button"><span id="btnText">验证卡密</span><svg class="btn-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
+    </footer>
+  </main>
+  <div id="toastCenter" class="toast-center"></div>
+  <script src="./script.js?v=20260519-force-fix"></script>
+</body>
+</html>
